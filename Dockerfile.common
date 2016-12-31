@@ -17,7 +17,7 @@ ENV TERM xterm
 # Install tools                                  #
 ##################################################
 USER root
-RUN apt-get install -y curl wget git apt-transport-https python build-essential make g++ libavahi-compat-libdnssd-dev libkrb5-dev vim net-tools dbus avahi-daemon
+RUN apt-get install -y curl wget git apt-transport-https apt-utils python build-essential make g++ libavahi-compat-libdnssd-dev libkrb5-dev vim net-tools dbus avahi-daemon
 RUN alias ll='ls -alG'
 RUN sed -i 's/rlimit-nproc=3/#rlimit-nproc=3/' /etc/avahi/avahi-daemon.conf
 #####SPECIFIC#####
