@@ -10,15 +10,14 @@ _build() {
   # Generate Dockerfile
   echo $FROM > Dockerfile
   cat Dockerfile.common >> Dockerfile
-  eval $SED_COMMAND
-
+  eval "$SED_COMMAND"
   # Build
   docker build --tag="patrickbusch/homebridge:$VERSION" .
 }
 
 _run() {
   # Run (first time)
-  docker run -d -p 0.0.0.0:51826:51826 -v /etc/homebridge:/root/.homebridge --net=host --name $IMAGE_NAME patrickbusch/homebridge:$VERSION
+  docker run -d -p 0.0.0.0:51826:51826 -v /root/.homebridge:/root/.homebridge --net=host --name $IMAGE_NAME patrickbusch/homebridge:$VERSION
 }
 
 _stop() {
